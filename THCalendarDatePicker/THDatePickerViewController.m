@@ -387,7 +387,13 @@
         NSDateComponents *firstDayOffsetComponents = [[NSDateComponents alloc] init];
         [firstDayOffsetComponents setDay:-_bufferDaysBeginning];
         NSDate * date = [_calendar dateByAddingComponents:firstDayOffsetComponents toDate:self.firstOfCurrentMonth options:0];
-        
+		
+		if (IS_DEVICE_RUNNING_IOS_X_AND_ABOVE(@"12.0")) {
+			NSDateComponents *offsetComponents2 = [[NSDateComponents alloc] init];
+			[offsetComponents2 setDay:2];
+			date = [_calendar dateByAddingComponents:offsetComponents2 toDate:date options:0];
+		}
+		
         for(int i = 0; i < 7; i++){
             UILabel * dayLabel = [[UILabel alloc] initWithFrame:CGRectMake(curX, 0, dayWidth, fullSize.height)];
             dayLabel.textAlignment = NSTextAlignmentCenter;
