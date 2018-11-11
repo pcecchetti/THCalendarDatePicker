@@ -388,7 +388,7 @@
         [firstDayOffsetComponents setDay:-_bufferDaysBeginning];
         NSDate * date = [_calendar dateByAddingComponents:firstDayOffsetComponents toDate:self.firstOfCurrentMonth options:0];
 		
-		if (IS_DEVICE_RUNNING_IOS_X_AND_ABOVE(@"12.0")) {
+		if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"12.0")) {
 			NSDateComponents *offsetComponents2 = [[NSDateComponents alloc] init];
 			[offsetComponents2 setDay:2];
 			date = [_calendar dateByAddingComponents:offsetComponents2 toDate:date options:0];
